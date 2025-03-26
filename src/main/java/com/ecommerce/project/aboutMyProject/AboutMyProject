@@ -1,0 +1,10 @@
+1. In createCategory method present in CategoryController we are using CategoryDTO to instead of Category for Request body because if we want to add a new field to the request body then we have to change the Category which is an entity. If that is modified then the table in the database will also be modified
+
+    @PostMapping("/admin/category")
+    public ResponseEntity<CategoryDTO> createCategory(@Valid @RequestBody CategoryDTO category) {
+        CategoryDTO response = categoryService.createCategory(category);
+//        return new ResponseEntity<>("Category added successfully", HttpStatus.CREATED);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+2.
